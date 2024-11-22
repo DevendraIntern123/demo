@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modules and Controllers in Files</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var app = angular.module('DemoApp', []);
+    </script>
+</head>
+
+<body ng-app="DemoApp">
+    <h1 style="color:green">GeeksforGeeks</h1>
+    <h3>AngularJS Modules</h3>
+    <h4>Using controllers in Module</h4>
+
+    <div ng-controller="DemoController">
+        Vowels List:
+        <button ng-click="ch('A')">A</button>
+        <button ng-click="ch('E')">E</button>
+        <button ng-click="ch('I')">I</button>
+        <button ng-click="ch('O')">O</button>
+        <button ng-click="ch('U')">U</button>
+
+        <p>{{ choice }}</p>
+
+        Vowels List:
+        <select ng-options="option for option in list" ng-model="mychoice" ng-change="c()">
+        </select>
+
+        <p>{{ choice }}</p>
+    </div>
+
+    <script>
+        app.controller('DemoController', function ($scope) {
+            $scope.list = ['A', 'E', 'I', 'O', 'U'];
+            $scope.choice = 'Your choice is: GeeksforGeeks';
+
+            $scope.ch = function (choice) {
+                $scope.choice = "Your choice is: " + choice;
+            };
+
+            $scope.c = function () {
+                $scope.choice = "Your choice is: " + $scope.mychoice;
+            };
+        });
+    </script>
+</body>
+
+</html>
